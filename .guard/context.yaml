@@ -1,0 +1,7 @@
+project: composurely-marketing
+instructions: ''
+vault:
+  protected:
+    - '**/payments/**'
+    - '**/.env*'
+  warn_on_change: true

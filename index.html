@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Composurely — Decode stressful work messages. Respond with calm clarity.</title>
+  <meta name="description" content="Paste any stressful Slack or email. Get what they actually want, a tone breakdown, and a calm reply to send. Patterns build over time. Available on Android.">
+  <meta name="keywords" content="decode work messages, stressful manager emails, workplace communication app, passive aggressive messages, calm reply generator">
+  <meta property="og:title" content="Composurely — Decode stressful work messages">
+  <meta property="og:description" content="Paste any stressful Slack or email. Get what they actually want — and a calm reply to send.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.composurely.com">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Composurely — Decode stressful work messages">
+  <meta name="twitter:description" content="Paste any stressful Slack or email. Get what they actually want — and a calm reply to send.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.composurely.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #faf8f5;
+      --bg2: #f2ede7;
+      --card: #ffffff;
+      --ink: #1a1510;
+      --ink-muted: #6b5e52;
+      --ink-faint: #a0907f;
+      --green: #2E4A3E;
+      --green-light: #3a7a4e;
+      --green-bg: #eaf4ee;
+      --orange: #d4732a;
+      --orange-bg: #fdf0e6;
+      --peach: #f5e6d6;
+      --border: rgba(26,21,16,0.08);
+      --border-em: rgba(26,21,16,0.13);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(250,248,245,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+
+    .nav-logo span { color: var(--green-light); }
+
+    .nav-cta {
+      background: var(--green);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover { background: var(--green-light); }
+
+    /* HERO */
+    .hero {
+      padding: 120px 24px 64px;
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--orange-bg);
+      border: 1px solid rgba(212,115,42,0.2);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 24px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--orange);
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(36px, 7vw, 58px);
+      line-height: 1.08;
+      letter-spacing: -0.5px;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--green-light);
+    }
+
+    .hero-sub {
+      font-size: clamp(16px, 2.5vw, 18px);
+      color: var(--ink-muted);
+      line-height: 1.65;
+      max-width: 520px;
+      margin: 0 auto 36px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--green);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 16px 28px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover { background: var(--green-light); transform: translateY(-1px); }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-primary svg { width: 20px; height: 20px; }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: white;
+      color: var(--ink-muted);
+      border: 1px solid var(--border-em);
+      border-radius: 12px;
+      padding: 14px 24px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-secondary:hover { border-color: var(--green-light); color: var(--green); }
+
+    .hero-note {
+      font-size: 12px;
+      color: var(--ink-faint);
+      margin-top: 16px;
+    }
+
+    /* MESSAGE DEMO */
+    .demo-strip {
+      background: var(--peach);
+      padding: 48px 24px;
+      overflow: hidden;
+    }
+
+    .demo-inner {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .demo-label {
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--orange);
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .message-bubble {
+      background: white;
+      border: 1px solid var(--border-em);
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      position: relative;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .message-bubble:nth-child(2) { animation-delay: 0.15s; }
+    .message-bubble:nth-child(3) { animation-delay: 0.3s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .bubble-sender {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--ink-muted);
+      margin-bottom: 6px;
+    }
+
+    .bubble-text {
+      font-size: 14px;
+      color: var(--ink);
+      line-height: 1.55;
+      font-style: italic;
+    }
+
+    .bubble-tag {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    .tag-vague { background: #e8f4fb; color: #2a6a90; }
+    .tag-pa { background: #f0ecfc; color: #8060d0; }
+    .tag-urgency { background: var(--orange-bg); color: var(--orange); }
+
+    .decode-arrow {
+      text-align: center;
+      font-size: 22px;
+      color: var(--green-light);
+      margin: 8px 0;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    .result-card {
+      background: var(--green-bg);
+      border: 1px solid rgba(58,122,78,0.2);
+      border-radius: 14px;
+      padding: 16px 20px;
+      animation: fadeUp 0.6s ease 0.45s both;
+    }
+
+    .result-label {
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--green-light);
+      margin-bottom: 8px;
+    }
+
+    .result-ask {
+      font-family: 'DM Serif Display', serif;
+      font-size: 16px;
+      color: var(--ink);
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+
+    .result-reply {
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.6;
+      padding: 10px 12px;
+      background: white;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    /* HOW IT WORKS */
+    .section {
+      padding: 80px 24px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--ink-faint);
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(28px, 5vw, 40px);
+      line-height: 1.15;
+      letter-spacing: -0.3px;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+
+    h2 em {
+      font-style: italic;
+      color: var(--green-light);
+    }
+
+    .section-sub {
+      font-size: 16px;
+      color: var(--ink-muted);
+      line-height: 1.65;
+      max-width: 500px;
+      margin-bottom: 48px;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .step {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .step:last-child { border-bottom: none; }
+
+    .step-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 36px;
+      color: var(--border-em);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 48px;
+      transition: color 0.2s;
+    }
+
+    .step:hover .step-num { color: var(--green-light); }
+
+    .step-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .step-body h3 {
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .step-body p {
+      font-size: 14px;
+      color: var(--ink-muted);
+      line-height: 1.6;
+    }
+
+    /* FEATURES */
+    .features-bg {
+      background: var(--bg2);
+      padding: 80px 24px;
+    }
+
+    .features-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .feature-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .feature-card:hover {
+      border-color: var(--border-em);
+      transform: translateY(-2px);
+    }
+
+    .feature-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      margin-bottom: 14px;
+    }
+
+    .feature-card h3 {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .feature-card p {
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.6;
+    }
+
+    /* PATTERN MOAT */
+    .moat {
+      padding: 80px 24px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .moat-card {
+      background: var(--green);
+      border-radius: 20px;
+      padding: 40px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .moat-card::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .moat-card::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: -40px;
+      width: 150px; height: 150px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .moat-eyebrow {
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 16px;
+    }
+
+    .moat-card h2 {
+      color: white;
+      margin-bottom: 16px;
+    }
+
+    .moat-card h2 em { color: #aaffcc; }
+
+    .moat-card p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.65;
+      max-width: 480px;
+    }
+
+    .moat-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 32px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      flex-wrap: wrap;
+    }
+
+    .moat-stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      color: white;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .moat-stat-label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* PRICING */
+    .pricing-bg {
+      background: var(--bg2);
+      padding: 80px 24px;
+    }
+
+    .pricing-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .pricing-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+    }
+
+    .pricing-card.featured {
+      border: 2px solid var(--green);
+      position: relative;
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--green);
+      color: white;
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 14px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .pricing-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+
+    .pricing-price {
+      font-family: 'DM Serif Display', serif;
+      font-size: 40px;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .pricing-price span {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      color: var(--ink-faint);
+      font-weight: 400;
+    }
+
+    .pricing-desc {
+      font-size: 13px;
+      color: var(--ink-muted);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    .pricing-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .pricing-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.45;
+    }
+
+    .pricing-features li::before {
+      content: '✓';
+      color: var(--green-light);
+      font-weight: 500;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .pricing-features li.muted::before { content: '–'; color: var(--ink-faint); }
+    .pricing-features li.muted { color: var(--ink-faint); }
+
+    .pricing-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .pricing-btn-outline {
+      background: transparent;
+      border: 1px solid var(--border-em);
+      color: var(--ink-muted);
+    }
+
+    .pricing-btn-outline:hover { border-color: var(--green-light); color: var(--green); }
+
+    .pricing-btn-filled {
+      background: var(--green);
+      border: 1px solid var(--green);
+      color: white;
+    }
+
+    .pricing-btn-filled:hover { background: var(--green-light); }
+
+    /* DOWNLOAD */
+    .download {
+      padding: 80px 24px;
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .download-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 400px;
+      margin: 40px auto 0;
+    }
+
+    .download-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-decoration: none;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .download-card:hover {
+      border-color: var(--green-light);
+      transform: translateY(-2px);
+    }
+
+    .download-card-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .download-card-body {
+      flex: 1;
+      text-align: left;
+    }
+
+    .download-card-label {
+      font-size: 11px;
+      color: var(--ink-faint);
+      margin-bottom: 2px;
+    }
+
+    .download-card-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .download-card-arrow {
+      font-size: 18px;
+      color: var(--ink-faint);
+    }
+
+    /* iOS WAITLIST */
+    .waitlist-card {
+      border: 1px dashed var(--border-em);
+      opacity: 0.85;
+    }
+
+    .waitlist-card:hover { border-style: solid; opacity: 1; }
+
+    .waitlist-form {
+      display: none;
+      margin-top: 12px;
+      gap: 8px;
+    }
+
+    .waitlist-form.open { display: flex; }
+
+    .waitlist-input {
+      flex: 1;
+      padding: 10px 14px;
+      border: 1px solid var(--border-em);
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      color: var(--ink);
+      background: var(--bg);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .waitlist-input:focus { border-color: var(--green-light); }
+
+    .waitlist-submit {
+      background: var(--green);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .waitlist-submit:hover { background: var(--green-light); }
+
+    .waitlist-thanks {
+      display: none;
+      font-size: 13px;
+      color: var(--green-light);
+      margin-top: 8px;
+      text-align: left;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: gap;
+      gap: 16px;
+    }
+
+    .footer-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 16px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .footer-logo span { color: var(--green-light); }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--ink-faint);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--ink-muted); }
+
+    .footer-copy {
+      font-size: 12px;
+      color: var(--ink-faint);
+      width: 100%;
+    }
+
+    /* SCROLL ANIMATIONS */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 600px) {
+      .moat-card { padding: 28px 24px; }
+      .moat-stats { gap: 20px; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">Compose<span>urely</span></a>
+  <a href="#download" class="nav-cta">Get the app</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">For knowledge workers</div>
+  <h1>Work messages,<br>without the <em>panic.</em></h1>
+  <p class="hero-sub">Paste any stressful Slack, email, or Teams message. Get what they actually want, a tone breakdown, and a calm reply you can send immediately.</p>
+  <div class="hero-ctas">
+    <a href="https://play.google.com/store/apps/details?id=com.composurely.app" class="btn-primary" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M3.18 23.76c.37.2.8.22 1.19.05l12.19-6.98-2.64-2.64-10.74 9.57zm-1.05-20.4C2.06 3.6 2 3.87 2 4.16v15.69c0 .29.06.55.13.8l.07.06 8.79-8.79v-.2L2.2 3.3l-.07.06zm17.12 9.45l-2.37-1.36-2.93 2.93 2.93 2.93 2.39-1.37c.68-.39.68-1.35-.02-1.73zM4.37.22L16.56 7.2l-2.64 2.64L3.18.27C3.56.1 4 .12 4.37.22z"/></svg>
+      Download on Google Play
+    </a>
+    <a href="#ios-waitlist" class="btn-secondary" onclick="openWaitlist(event)">
+      🍎 iOS coming soon — join waitlist
+    </a>
+  </div>
+  <p class="hero-note">Free to start · No account required for first 3 decodes</p>
+</section>
+
+<!-- DEMO STRIP -->
+<div class="demo-strip">
+  <div class="demo-inner">
+    <div class="demo-label">You receive this message</div>
+    <div class="message-bubble">
+      <div class="bubble-sender">Marcus · Slack</div>
+      <div class="bubble-text">"Can we talk Monday? I have some concerns about the direction of the project."</div>
+      <span class="bubble-tag tag-vague">Unclear / anxiety-inducing</span>
+    </div>
+    <div class="decode-arrow">↓</div>
+    <div class="result-card">
+      <div class="result-label">✦ What they actually want</div>
+      <div class="result-ask">They want to discuss a strategic disagreement before it escalates publicly. This is a request for alignment, not a performance conversation.</div>
+      <div class="result-reply">"Of course — I'll block time Monday morning. Want to send an agenda so we can make the most of it?"</div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="section reveal" id="how-it-works">
+  <div class="section-label">How it works</div>
+  <h2>Three outputs.<br><em>One tap.</em></h2>
+  <p class="section-sub">Composurely analyses the message, the sender, and your context — then gives you everything you need to respond with clarity.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-icon" style="background:#eaf4ee;">📋</div>
+      <div class="step-body">
+        <h3>Paste the message</h3>
+        <p>Copy any Slack message, email, Teams chat, or WhatsApp. Paste it exactly as you received it — don't summarise. Add optional context: what just happened before this arrived.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-icon" style="background:#fdf0e6;">✦</div>
+      <div class="step-body">
+        <h3>Get the real read</h3>
+        <p>Composurely returns three things: what they actually want (stripped of emotional charge), a tone breakdown with the specific phrases that reveal the subtext, and a stress score.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-icon" style="background:#f0ecfc;">↩</div>
+      <div class="step-body">
+        <h3>Send the calm reply</h3>
+        <p>A professionally composed reply — under 40 words, calm, clear, and ready to send. One tap to copy. Or make it shorter if you need to.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<div class="features-bg" id="features">
+  <div class="features-inner reveal">
+    <div class="section-label">Features</div>
+    <h2>Everything you need.<br><em>Nothing you don't.</em></h2>
+    <p class="section-sub">Built for daily use. Every feature earns its place.</p>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#eaf4ee;">🤝</div>
+        <h3>Two lenses</h3>
+        <p>See every message through a charitable read and a stress read. Understand both the best-case interpretation and the implicit pressure you actually felt.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#fdf0e6;">📷</div>
+        <h3>Scan &amp; screenshot</h3>
+        <p>Can't copy-paste? Take a photo or upload a screenshot. Composurely extracts the text automatically using AI vision.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#f0ecfc;">◈</div>
+        <h3>Pattern detection</h3>
+        <p>After every 5 messages, Composurely surfaces patterns in how your colleagues communicate — timing, tone, and trigger situations.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#eaf4ee;">📊</div>
+        <h3>Relationship map</h3>
+        <p>A visual network of the people in your inbox, sized by message volume and coloured by stress level. See who's costing you the most energy at a glance.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#fdf0e6;">📅</div>
+        <h3>Weekly brief</h3>
+        <p>Every Monday, a plain-language summary of your communication week. Who sent what, when, and what it meant. No emotional language — just the facts.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#f0ecfc;">🔒</div>
+        <h3>Private by design</h3>
+        <p>Your messages are processed securely. No message content is used for training. You can delete your account and all data at any time.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PATTERN MOAT -->
+<section class="moat reveal">
+  <div class="moat-card">
+    <div class="moat-eyebrow">Why Composurely gets better over time</div>
+    <h2>The more you use it,<br>the more it <em>knows.</em></h2>
+    <p>After 100 messages from Marcus, Composurely knows that Marcus escalates before board calls, calms down by Friday, and uses vague language when covering bad news. That context is irreplaceable — and it's yours.</p>
+    <div class="moat-stats">
+      <div>
+        <div class="moat-stat-num">5</div>
+        <div class="moat-stat-label">messages to first pattern</div>
+      </div>
+      <div>
+        <div class="moat-stat-num">3</div>
+        <div class="moat-stat-label">senders tracked simultaneously</div>
+      </div>
+      <div>
+        <div class="moat-stat-num">95%</div>
+        <div class="moat-stat-label">tone detection accuracy</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<div class="pricing-bg" id="pricing">
+  <div class="pricing-inner reveal">
+    <div class="section-label">Pricing</div>
+    <h2>Start free.<br><em>Upgrade when it clicks.</em></h2>
+    <p class="section-sub">No credit card required to start. Upgrade when you need the full pattern engine.</p>
+
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-name">Free</div>
+        <div class="pricing-price">$0</div>
+        <div class="pricing-desc">3 decodes per day. No account required to try.</div>
+        <ul class="pricing-features">
+          <li>3 message decodes per day</li>
+          <li>Real ask + tone breakdown</li>
+          <li>Calm reply generator</li>
+          <li>Two lenses (charitable &amp; stress)</li>
+          <li class="muted">Decode history</li>
+          <li class="muted">Pattern detection</li>
+          <li class="muted">Relationship map</li>
+          <li class="muted">Weekly brief</li>
+        </ul>
+        <a href="https://play.google.com/store/apps/details?id=com.composurely.app" class="pricing-btn pricing-btn-outline" target="_blank" rel="noopener">Download free</a>
+      </div>
+
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Most popular</div>
+        <div class="pricing-name">Pro</div>
+        <div class="pricing-price">$9 <span>/ month</span></div>
+        <div class="pricing-desc">Unlimited decodes, full pattern engine, weekly briefs.</div>
+        <ul class="pricing-features">
+          <li>Unlimited message decodes</li>
+          <li>Full decode history</li>
+          <li>Pattern detection engine</li>
+          <li>Relationship map</li>
+          <li>Weekly communication brief</li>
+          <li>Camera &amp; screenshot scanning</li>
+          <li>Context chips &amp; free text</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="https://play.google.com/store/apps/details?id=com.composurely.app" class="pricing-btn pricing-btn-filled" target="_blank" rel="noopener">Get Pro on Android</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DOWNLOAD -->
+<section class="download reveal" id="download">
+  <div class="section-label">Download</div>
+  <h2>Available on <em>Android.</em><br>iOS coming soon.</h2>
+  <p class="section-sub" style="margin:0 auto;">Download from Google Play or join the iOS waitlist — we'll email you the moment it launches.</p>
+
+  <div class="download-cards">
+    <a href="https://play.google.com/store/apps/details?id=com.composurely.app" class="download-card" target="_blank" rel="noopener">
+      <div class="download-card-icon" style="background:#eaf4ee;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="#2E4A3E" xmlns="http://www.w3.org/2000/svg"><path d="M3.18 23.76c.37.2.8.22 1.19.05l12.19-6.98-2.64-2.64-10.74 9.57zm-1.05-20.4C2.06 3.6 2 3.87 2 4.16v15.69c0 .29.06.55.13.8l.07.06 8.79-8.79v-.2L2.2 3.3l-.07.06zm17.12 9.45l-2.37-1.36-2.93 2.93 2.93 2.93 2.39-1.37c.68-.39.68-1.35-.02-1.73zM4.37.22L16.56 7.2l-2.64 2.64L3.18.27C3.56.1 4 .12 4.37.22z"/></svg>
+      </div>
+      <div class="download-card-body">
+        <div class="download-card-label">Available now</div>
+        <div class="download-card-title">Download on Google Play</div>
+      </div>
+      <div class="download-card-arrow">→</div>
+    </a>
+
+    <div class="download-card waitlist-card" id="ios-waitlist" style="flex-direction:column;align-items:flex-start;cursor:pointer;" onclick="openWaitlist(event)">
+      <div style="display:flex;align-items:center;gap:16px;width:100%;">
+        <div class="download-card-icon" style="background:#f2ede7;">🍎</div>
+        <div class="download-card-body">
+          <div class="download-card-label">Coming soon</div>
+          <div class="download-card-title">Join iOS waitlist</div>
+        </div>
+        <div class="download-card-arrow" id="waitlist-arrow">+</div>
+      </div>
+      <div class="waitlist-form" id="waitlist-form">
+        <input type="email" class="waitlist-input" placeholder="your@email.com" id="waitlist-email">
+        <button class="waitlist-submit" onclick="submitWaitlist(event)">Notify me</button>
+      </div>
+      <div class="waitlist-thanks" id="waitlist-thanks">✓ You're on the list. We'll email you when iOS launches.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="/" class="footer-logo">Compose<span>urely</span></a>
+  <div class="footer-links">
+    <a href="https://composurely.com/privacy" target="_blank">Privacy</a>
+    <a href="mailto:info@composurely.com">Contact</a>
+    <a href="https://play.google.com/store/apps/details?id=com.composurely.app" target="_blank">Google Play</a>
+  </div>
+  <div class="footer-copy">© 2026 Composurely. All rights reserved.</div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => observer.observe(r));
+
+  // iOS waitlist
+  function openWaitlist(e) {
+    e.preventDefault();
+    const form = document.getElementById('waitlist-form');
+    const arrow = document.getElementById('waitlist-arrow');
+    form.classList.toggle('open');
+    arrow.textContent = form.classList.contains('open') ? '−' : '+';
+    if (form.classList.contains('open')) {
+      setTimeout(() => document.getElementById('waitlist-email').focus(), 100);
+    }
+  }
+
+  function submitWaitlist(e) {
+    e.stopPropagation();
+    const email = document.getElementById('waitlist-email').value;
+    if (!email || !email.includes('@')) {
+      document.getElementById('waitlist-email').style.borderColor = '#d4732a';
+      return;
+    }
+    document.getElementById('waitlist-form').style.display = 'none';
+    document.getElementById('waitlist-thanks').style.display = 'block';
+
+    // Send to your backend or a simple form service
+    fetch('https://composurely.com/api/waitlist', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, source: 'ios-waitlist' })
+    }).catch(() => {});
+  }
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
