@@ -177,7 +177,7 @@
     /* HERO */
     .hero {
       padding: 120px 24px 64px;
-      max-width: 1100px;
+      max-width: min(1200px, 90vw);
       margin: 0 auto;
       text-align: center;
     }
@@ -360,7 +360,7 @@
     /* HOW IT WORKS */
     .section {
       padding: 80px 24px;
-      max-width: 1100px;
+      max-width: min(1200px, 90vw);
       margin: 0 auto;
     }
 
@@ -465,7 +465,7 @@
     }
 
     .features-inner {
-      max-width: 1100px;
+      max-width: min(1200px, 90vw);
       margin: 0 auto;
     }
 
@@ -515,7 +515,7 @@
     /* PATTERN MOAT */
     .moat {
       padding: 80px 24px;
-      max-width: 1100px;
+      max-width: min(1200px, 90vw);
       margin: 0 auto;
     }
 
@@ -598,7 +598,7 @@
     }
 
     .pricing-inner {
-      max-width: 1100px;
+      max-width: min(1200px, 90vw);
       margin: 0 auto;
     }
 
@@ -725,7 +725,7 @@
     /* DOWNLOAD */
     .download {
       padding: 80px 24px;
-      max-width: 1100px;
+      max-width: min(1200px, 90vw);
       margin: 0 auto;
       text-align: center;
     }
@@ -967,6 +967,41 @@
     .btn-ios svg { fill: var(--ink); }
 
     .btn-ios:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.14); }
+
+    /* ── Wide-screen scaling (1400px+) ──────────────────────────────────
+       Larger type + roomier spacing so the layout doesn't feel sparse.
+       Brief selectors renamed to match the real classes:
+       .section-heading → h2, .moat-stat-number → .moat-stat-num,
+       .demo-section → .demo-strip. Nav padding intentionally left as-is
+       (its max() padding already centres content in the same 1200px band). */
+    @media (min-width: 1400px) {
+      html { font-size: 18px; }
+
+      .hero h1 { font-size: 72px; }
+      .hero-sub { font-size: 20px; max-width: 600px; }
+
+      h2 { font-size: 52px; }
+      .section-sub { font-size: 18px; }
+
+      .step-body h3 { font-size: 20px; }
+      .step-body p { font-size: 16px; max-width: 680px; }
+
+      .feature-card { padding: 28px; }
+      .feature-card h3 { font-size: 17px; }
+      .feature-card p { font-size: 15px; }
+
+      .moat-stat-num { font-size: 56px; }
+      .pricing-card { padding: 36px; }
+
+      /* Vertical spacing — all content bands (sections + div-based bands) */
+      .hero { padding: 140px 48px 100px; }
+      .section,
+      .moat,
+      .download,
+      .features-bg,
+      .pricing-bg { padding: 100px 48px; }
+      .demo-strip { padding: 80px 48px; }
+    }
   </style>
 </head>
 
