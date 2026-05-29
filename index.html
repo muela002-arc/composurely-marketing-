@@ -130,8 +130,9 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* NAV */
-    nav {
+    /* NAV — scoped to the primary nav (direct child of body) so the
+       footer's <nav class="footer-links"> isn't also pinned to the top */
+    body > nav {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
@@ -139,7 +140,8 @@
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      padding: 0 24px;
+      /* Full-bleed backdrop, but content stays within a 1200px centred band on wide screens */
+      padding: 0 max(24px, calc((100% - 1200px) / 2));
       height: 60px;
       display: flex;
       align-items: center;
